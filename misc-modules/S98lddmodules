@@ -9,17 +9,17 @@ case "$1" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /sbin/insmod scull.ko
+		    /etc/init.d/scull_load $module
 		    ;;
 		hello.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /sbin/modprobe hello.ko
+		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /sbin/insmod faulty.ko
+		    /etc/init.d/module_load $module
 		    ;;
 		*)
 		    ;;
@@ -34,17 +34,17 @@ case "$1" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /sbin/rmmod scull
+		    /etc/init.d/scull_unload $module
 		    ;;
 		hello.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /sbin/rmmod hello
+		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /sbin/rmmod faulty
+		    /etc/init.d/module_load $module
 		    ;;
 		*)
 		    ;;
