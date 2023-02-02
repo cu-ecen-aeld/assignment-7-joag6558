@@ -1,27 +1,29 @@
 #!/bin/sh
 
+set -e
+
 case "$1" in
     start)
-        echo -n "loading devices..."
+        echo -n "loading devices...\n"
 	for i in /lib/modules/5.15.18/extra/*.ko
 	do
 	    case "$i" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    echo -n "module $module"
+		    echo -n "module $module\n"
 		    /etc/init.d/scull_load $module
 		    ;;
 		hello.ko)
 		    module=$i
 		    module="${module%.*}"
-		    echo -n "module $module"
+		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
 		    module=$i
 		    module="${module%.*}"
-		    echo -n "module $module"
+		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
@@ -37,19 +39,19 @@ case "$1" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    echo -n "module $module"
+		    echo -n "module $module\n"
 		    /etc/init.d/scull_unload $module
 		    ;;
 		hello.ko)
 		    module=$i
 		    module="${module%.*}"
-		    echo -n "module $module"
+		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
 		    module=$i
 		    module="${module%.*}"
-		    echo -n "module $module"
+		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
