@@ -27,6 +27,7 @@ case "$1" in
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
+		    echo -n "module $i\n"
 		    ;;
 	    esac
 	done
@@ -55,6 +56,7 @@ case "$1" in
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
+		    echo -n "module $i\n"
 		    ;;
 	    esac
 	done
