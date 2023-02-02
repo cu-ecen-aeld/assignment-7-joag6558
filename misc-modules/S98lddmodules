@@ -2,37 +2,51 @@
 
 case "$1" in
     start)
-        echo -n "loading devices...\n"
+        echo -n "loading devices..."
 	for i in /lib/modules/5.15.18/extra/*.ko
 	do
 	    case "$i" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /etc/init.d/scull_load $module
+		    /sbin/insmod scull.ko
 		    ;;
-		*)
+		hello.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /etc/init.d/module_load $module
+		    /sbin/modprobe hello.ko
+		    ;;
+		faulty.ko)
+		    module=$i
+		    module="${module%.*}"
+		    /sbin/insmod faulty.ko
+		    ;;
+		*)
 		    ;;
 	    esac
 	done
         ;;
     stop)
-        echo -n "unloading devices...\n"
+        echo -n "unloading devices..."
 	for i in /lib/modules/5.15.18/extra/*.ko
 	do
 	    case "$i" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /etc/init.d/scull_unload $module
+		    /sbin/rmmod scull
 		    ;;
-		*)
+		hello.ko)
 		    module=$i
 		    module="${module%.*}"
-		    /etc/init.d/module_unload $module
+		    /sbin/rmmod hello
+		    ;;
+		faulty.ko)
+		    module=$i
+		    module="${module%.*}"
+		    /sbin/rmmod faulty
+		    ;;
+		*)
 		    ;;
 	    esac
 	done
