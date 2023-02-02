@@ -4,59 +4,41 @@ set -e
 
 case "$1" in
     start)
-        echo -n "loading devices...\n"
+        echo "loading devices..."
 	for i in /lib/modules/5.15.18/extra/*.ko
 	do
-	    case "$i" in
+	module="${i##*/}"
+	    case "$module" in
 		scull.ko)
-		    module=$i
-		    module="${module%.*}"
-		    echo -n "module $module\n"
 		    /etc/init.d/scull_load $module
 		    ;;
 		hello.ko)
-		    module=$i
-		    module="${module%.*}"
-		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
-		    module=$i
-		    module="${module%.*}"
-		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
-		    echo -n "module $i\n"
 		    ;;
 	    esac
 	done
         ;;
     stop)
-        echo -n "unloading devices..."
+        echo "unloading devices..."
 	for i in /lib/modules/5.15.18/extra/*.ko
 	do
-	    case "$i" in
+	module="${i##*/}"
+	    case "$module" in
 		scull.ko)
-		    module=$i
-		    module="${module%.*}"
-		    echo -n "module $module\n"
 		    /etc/init.d/scull_unload $module
 		    ;;
 		hello.ko)
-		    module=$i
-		    module="${module%.*}"
-		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
-		    module=$i
-		    module="${module%.*}"
-		    echo -n "module $module\n"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
-		    echo -n "module $i\n"
 		    ;;
 	    esac
 	done
