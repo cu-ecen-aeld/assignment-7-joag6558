@@ -10,7 +10,7 @@ if [ $# -ne 1 ]; then
 fi
 
 # invoke rmmod with all arguments we got
-rmmod $module || exit 1
+/sbin/insmod $module || exit 1
 
 # Remove stale nodes
 
