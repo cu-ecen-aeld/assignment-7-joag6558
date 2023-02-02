@@ -9,12 +9,12 @@ case "$1" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    ./scull_load module
+		    /etc/init.d/scull_load module
 		    ;;
 		*)
 		    module=$i
 		    module="${module%.*}"
-		    ./module_load module
+		    /etc/init.d/module_load module
 		    ;;
 	    esac
 	done
@@ -27,12 +27,12 @@ case "$1" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
-		    ./scull_unload module
+		    /etc/init.d/scull_unload module
 		    ;;
 		*)
 		    module=$i
 		    module="${module%.*}"
-		    ./module_unload module
+		    /etc/init.d/module_unload module
 		    ;;
 	    esac
 	done
