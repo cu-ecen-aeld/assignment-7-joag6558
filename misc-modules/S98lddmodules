@@ -9,16 +9,19 @@ case "$1" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
+		    echo -n "module $module"
 		    /etc/init.d/scull_load $module
 		    ;;
 		hello.ko)
 		    module=$i
 		    module="${module%.*}"
+		    echo -n "module $module"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
 		    module=$i
 		    module="${module%.*}"
+		    echo -n "module $module"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
@@ -34,16 +37,19 @@ case "$1" in
 		scull.ko)
 		    module=$i
 		    module="${module%.*}"
+		    echo -n "module $module"
 		    /etc/init.d/scull_unload $module
 		    ;;
 		hello.ko)
 		    module=$i
 		    module="${module%.*}"
+		    echo -n "module $module"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
 		    module=$i
 		    module="${module%.*}"
+		    echo -n "module $module"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
