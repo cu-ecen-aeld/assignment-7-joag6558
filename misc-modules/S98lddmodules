@@ -1,0 +1,46 @@
+#!/bin/sh
+
+case "$1" in
+    start)
+        echo -n "loading devices...\n"
+	for i in /lib/modules/5.15.18/extra/*.ko
+	do
+	    case "$i" in
+		scull.ko)
+		    module=$i
+		    module="${module%.*}"
+		    ./scull_load module
+		    ;;
+		*)
+		    module=$i
+		    module="${module%.*}"
+		    ./module_load module
+		    ;;
+	    esac
+	done
+        ;;
+    stop)
+        echo -n "unloading devices...\n"
+	for i in /lib/modules/5.15.18/extra/*.ko
+	do
+	    case "$i" in
+		scull.ko)
+		    module=$i
+		    module="${module%.*}"
+		    ./scull_unload module
+		    ;;
+		*)
+		    module=$i
+		    module="${module%.*}"
+		    ./module_unload module
+		    ;;
+	    esac
+	done
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit $?
