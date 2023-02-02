@@ -10,12 +10,15 @@ case "$1" in
 	module="${i##*/}"
 	    case "$module" in
 		scull.ko)
+		module="${module%.*}"
 		    /etc/init.d/scull_load $module
 		    ;;
 		hello.ko)
+		module="${module%.*}"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
+		module="${module%.*}"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
@@ -30,12 +33,15 @@ case "$1" in
 	module="${i##*/}"
 	    case "$module" in
 		scull.ko)
+		module="${module%.*}"
 		    /etc/init.d/scull_unload $module
 		    ;;
 		hello.ko)
+		module="${module%.*}"
 		    /etc/init.d/module_load $module
 		    ;;
 		faulty.ko)
+		module="${module%.*}"
 		    /etc/init.d/module_load $module
 		    ;;
 		*)
